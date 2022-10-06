@@ -17,6 +17,13 @@ router.post(
   ctrlWrapper(ctrl.login)
 );
 
+router.patch(
+  "/",
+  authenticate,
+  validateBody(schemas.updateSubscribtion),
+  ctrlWrapper(ctrl.updateSubscribtion)
+);
+
 router.get("/current", authenticate, ctrlWrapper(ctrl.getCurrent));
 
 router.get("/logout", authenticate, ctrlWrapper(ctrl.logout));

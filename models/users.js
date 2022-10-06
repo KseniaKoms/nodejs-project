@@ -15,6 +15,10 @@ const userSchema = new Schema(
       required: [true, "Email is required"],
       unique: true,
     },
+    name: {
+      type: String,
+      required: [true, "Name is required"],
+    },
     subscription: {
       type: String,
       enum: ["starter", "pro", "business"],
@@ -43,9 +47,14 @@ const loginSchema = Joi.object({
   subscription: Joi.string(),
 });
 
+const updateSubscribtion = Joi.object({
+  subscription: Joi.string().required(),
+});
+
 const schemas = {
   registerSchema,
   loginSchema,
+  updateSubscribtion,
 };
 
 const User = model("user", userSchema);

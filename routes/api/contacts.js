@@ -36,4 +36,5 @@ router.patch(
   ctrlWrapper(ctrl.updateFavorite)
 );
 
+
 module.exports = router;
