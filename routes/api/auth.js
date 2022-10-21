@@ -28,7 +28,9 @@ router.get("/current", authenticate, ctrlWrapper(ctrl.getCurrent));
 
 router.get("/logout", authenticate, ctrlWrapper(ctrl.logout));
 
-router.patch("/avatars", authenticate, upload.single("avatar"), ctrlWrapper(ctrl.updateAvatar))
+router.patch("/avatars", authenticate, upload.single("avatar"), ctrlWrapper(ctrl.updateAvatar));
+
+router.get("/verify/:verificationToken")
 
 
 module.exports = router;
