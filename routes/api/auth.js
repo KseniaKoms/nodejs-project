@@ -11,6 +11,11 @@ router.post(
   validateBody(schemas.registerSchema),
   ctrlWrapper(ctrl.register)
 );
+
+router.get("/verify/:verificationToken", ctrlWrapper(ctrl.verify));
+
+router.post("/verify", validateBody(schemas.verifyEmailSchema), ctrlWrapper(ctrl.resendVerify));
+
 router.post(
   "/login",
   validateBody(schemas.loginSchema),
@@ -30,9 +35,7 @@ router.get("/logout", authenticate, ctrlWrapper(ctrl.logout));
 
 router.patch("/avatars", authenticate, upload.single("avatar"), ctrlWrapper(ctrl.updateAvatar));
 
-router.get("/verify/:verificationToken", ctrlWrapper(ctrl.verify));
 
-router.post("/verify", validateBody(schemas.verifyEmailSchema), ctrlWrapper(ctrl.resendVerify));
 
 
 module.exports = router;
